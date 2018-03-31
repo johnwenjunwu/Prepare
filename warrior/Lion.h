@@ -11,7 +11,7 @@
 class Lion : public Warrior {
 private:
     static int s_initValue;
-    double m_loyalty{};
+    int m_loyalty{};
 public:
     std::shared_ptr<Warrior> make(int &remainingValue, int id) override;
 
@@ -19,7 +19,7 @@ public:
 
     static int getInitValue() { return s_initValue; }
 
-    Lion(int id, double loyalty) : Warrior(id, s_initValue), m_loyalty(loyalty) {}
+    Lion(int id, int loyalty) : Warrior(id, s_initValue), m_loyalty(loyalty) {}
 
     Lion() = default;
 

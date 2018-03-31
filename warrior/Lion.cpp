@@ -14,6 +14,6 @@ std::shared_ptr<Warrior> Lion::make(int &remainingValue, int id) {
     if (remainingValue < s_initValue) return nullptr;
     remainingValue -= s_initValue;
 
-    double morale = remainingValue;
+    int morale = remainingValue;
     return std::make_shared<Lion>(id, morale);
 }

@@ -4,11 +4,6 @@
 
 #include <place/BlueHeadquarter.h>
 #include <place/RedHeadquarter.h>
-#include <warrior/Dragon.h>
-#include <warrior/Ninja.h>
-#include <warrior/Iceman.h>
-#include <warrior/Lion.h>
-#include <warrior/Wolf.h>
 #include "Game.h"
 
 void Game::test() {
