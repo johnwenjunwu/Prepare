@@ -10,7 +10,11 @@
 
 class Bomb : public Weapon {
 public:
-    std::shared_ptr<Weapon> clone() override { return std::make_shared<Bomb>(*this); }
+    std::string getName() override {
+        return "bomb";
+    }
+
+    std::shared_ptr<Weapon> make() override;
 };
 
 

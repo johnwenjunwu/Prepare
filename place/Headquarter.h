@@ -6,6 +6,7 @@
 #define PREPARE_HEADQUARTER_H
 #include <vector>
 #include <tools/Factory.h>
+#include <warrior/Warrior.h>
 
 class Headquarter {
 private:
@@ -20,6 +21,10 @@ public:
     virtual std::string getName() = 0;
 
     void makeWarrior();
+
+    void printWarrior(std::shared_ptr<Warrior> warrior);
+
+    void printFailure();
 
     bool isStop();
 

@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include "Headquarter.h"
-
+#include <algorithm>
 
 int Headquarter::s_initialValue;
 
@@ -17,12 +17,29 @@ bool Headquarter::isStop() {
 }
 
 void Headquarter::makeWarrior() {
-    std::cout << getName() << ' ';
-    m_factory.makeWarrior(m_warriors, m_lifeValue);
-    if (isStop()) {
-        std::cout << "headquarter stops making warriors\n";
+    auto warrior = m_factory.makeWarrior(m_lifeValue);
+    if (warrior) {
+        m_warriors.push_back(warrior);
+        printWarrior(warrior);
     } else {
-        std::cout << "in " << getName() << " headquarter\n";
+        printFailure();
     }
 }
+
+void Headquarter::printWarrior(std::shared_ptr<Warrior> warrior) {
+
+    auto sum = std::count_if(m_warriors.begin(), m_warriors.end(), [&warrior](const std::shared_ptr<Warrior> &item) {
+        return item->getName() == warrior->getName();
+    });
+    std::cout << getName() << ' ' << warrior->getName() << ' ' << warrior->getId() << " born with strength "
+              << warrior->getLifeValue() << ',' << sum << ' ' << warrior->getName() << " in " << getName()
+              << " headquarter\n";
+    warrior->print();
+}
+
+void Headquarter::printFailure() {
+    std::cout << getName() << " headquarter stops making warriors\n";
+}
+
+
 

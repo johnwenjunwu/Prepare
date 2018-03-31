@@ -1,11 +1,14 @@
 
-#include <warrior/Dragon.h>
+
+
+#include <iostream>
+#include <iomanip>
 #include <tools/Game.h>
+#include <vector>
 
 int main() {
     Game::testAll();
 
-//    auto dragon = *std::make_shared<Dragon>();
 
     return 0;
 }

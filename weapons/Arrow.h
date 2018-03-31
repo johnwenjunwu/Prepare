@@ -9,9 +9,12 @@
 #include "Weapon.h"
 
 class Arrow : public Weapon {
-
 public:
-    std::shared_ptr<Weapon> clone() override { return std::make_shared<Arrow>(*this); }
+    std::string getName() override {
+        return "arrow";
+    }
+
+    std::shared_ptr<Weapon> make() override;
 };
 
 #endif //PREPARE_ARROW_H

@@ -3,3 +3,7 @@
 //
 
 #include "Arrow.h"
+
+std::shared_ptr<Weapon> Arrow::make() {
+    return std::make_shared<Arrow>();
+}

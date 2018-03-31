@@ -10,7 +10,11 @@
 
 class Sword : public Weapon {
 public:
-    std::shared_ptr<Weapon> clone() override { return std::make_shared<Sword>(*this); }
+    std::string getName() override {
+        return "sword";
+    }
+
+    std::shared_ptr<Weapon> make() override;
 };
 
 

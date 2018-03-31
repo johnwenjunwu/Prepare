@@ -3,3 +3,7 @@
 //
 
 #include "Bomb.h"
+
+std::shared_ptr<Weapon> Bomb::make() {
+    return std::make_shared<Bomb>();
+}

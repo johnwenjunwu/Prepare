@@ -9,9 +9,21 @@
 #include "Warrior.h"
 
 class Lion : public Warrior {
+private:
+    static int s_initValue;
+    double m_loyalty{};
 public:
+    std::shared_ptr<Warrior> make(int &remainingValue, int id) override;
 
-    std::shared_ptr<Warrior> build() override { return std::make_shared<Lion>(*this); };
+    static void cinInitValue() { std::cin >> s_initValue; };
+
+    static int getInitValue() { return s_initValue; }
+
+    Lion(int id, double loyalty) : Warrior(id, s_initValue), m_loyalty(loyalty) {}
+
+    Lion() = default;
+
+    void print() override;
 
     std::string getName() override { return "lion"; }
 };

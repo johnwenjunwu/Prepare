@@ -5,16 +5,17 @@
 #ifndef PREPARE_WEAPON_H
 #define PREPARE_WEAPON_H
 
-
 #include <memory>
-#include "WeaponType.h"
-
+#include <string>
 
 class Weapon {
 private:
 public:
-    virtual std::shared_ptr<Weapon> clone() = 0;
+    static std::shared_ptr<Weapon> build(int choice);
 
+    virtual std::string getName() = 0;
+
+    virtual std::shared_ptr<Weapon> make() = 0;
 };
 
 #endif //PREPARE_WEAPON_H

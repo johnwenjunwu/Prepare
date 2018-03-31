@@ -7,24 +7,23 @@
 
 #include <string>
 #include <iostream>
-#include <weapons/Weapon.h>
-#include <vector>
+#include <tools/Type.h>
+#include <memory>
 
 class Warrior {
 private:
-    int m_id{}, m_lifeValue{}, power{};
-    static const std::vector<std::shared_ptr<Weapon>> s_weapons;
+    int m_id{}, m_lifeValue{};
 
 public:
-    Warrior() = default;
-
     Warrior(int id, int lifeValue) : m_id(id), m_lifeValue(lifeValue) {}
 
-    virtual std::shared_ptr<Warrior> build() = 0;
+    Warrior() = default;
+
+    static std::shared_ptr<Warrior> build(Type type, int &remainingValue, int id);
+
+    virtual std::shared_ptr<Warrior> make(int &remainingValue, int id) = 0;
 
     virtual std::string getName() = 0;
-
-    void cinLifeValue() { std::cin >> m_lifeValue; };
 
     int getLifeValue() const {
         return m_lifeValue;
@@ -34,9 +33,7 @@ public:
         return m_id;
     }
 
-    void setId(int id) {
-        m_id = id;
-    }
+    virtual void print() {};
 
     virtual ~Warrior() = default;
 };
